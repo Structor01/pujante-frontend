@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { BookOpen, Play, Clock, Search } from 'lucide-react';
-import './App.css';
+import '../App.css';
 
 const Trilhas = () => {
   const [trilhas, setTrilhas] = useState([]);

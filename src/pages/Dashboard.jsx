@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { BookOpen, Play, Clock, Users } from 'lucide-react';
-import './App.css';
+import '../App.css';
 
 const Dashboard = () => {
   const { user } = useAuth();

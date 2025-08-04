@@ -7,7 +7,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { ArrowLeft, Play, Clock, BookOpen, CheckCircle } from 'lucide-react';
-import './App.css';
+import '../App.css';
 
 const TrilhaDetalhes = () => {
   const { id } = useParams();

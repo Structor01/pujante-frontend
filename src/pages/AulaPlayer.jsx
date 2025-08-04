@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { ArrowLeft, Play, Pause, Volume2, Maximize } from 'lucide-react';
-import './App.css';
+import '../App.css';
 
 const AulaPlayer = () => {
   const { id } = useParams();

@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Alert, AlertDescription } from '../components/ui/alert';
 import { Eye, EyeOff, Mail, Lock, User, Phone } from 'lucide-react';
 import pujanteLogo from '../assets/pujante-logo.png';
-import './App.css';
+import '../App.css';
 
 const Register = () => {
   const { register, isAuthenticated } = useAuth();
