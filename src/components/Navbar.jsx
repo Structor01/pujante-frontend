@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/dashboard" className="flex items-center space-x-2">
+            <Link to="/home" className="flex items-center space-x-2">
               <img 
                 src={pujanteLogo} 
                 alt="Pujante" 
@@ -36,11 +36,11 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                to="/dashboard"
+                to="/home"
                 className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-1"
               >
                 <Home className="h-4 w-4" />
-                <span>Dashboard</span>
+                <span>Início</span>
               </Link>
               <Link
                 to="/trilhas"
@@ -48,6 +48,13 @@ const Navbar = () => {
               >
                 <BookOpen className="h-4 w-4" />
                 <span>Trilhas</span>
+              </Link>
+              <Link
+                to="/dashboard"
+                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-1"
+              >
+                <User className="h-4 w-4" />
+                <span>Dashboard</span>
               </Link>
             </div>
           </div>

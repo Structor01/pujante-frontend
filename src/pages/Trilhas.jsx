@@ -69,15 +69,14 @@ const Trilhas = () => {
           
         {/* Search */}
         <div className="relative max-w-md mb-8">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="Buscar trilhas..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
+          <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <Input
+            type="text"
+            placeholder="Buscar trilhas..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10"
+          />
         </div>
 
         {/* Trilhas Grid */}

@@ -146,3 +146,79 @@
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
+
+/* Netflix-inspired styles */
+.netflix-hero {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+.netflix-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.netflix-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Text truncation utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Scrollbar customization for dark theme */
+.dark::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.dark::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Hero section styles */
+.hero-content {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.1;
+  }
+  
+  .hero-description {
+    font-size: 1.125rem !important;
+  }
+}
+
