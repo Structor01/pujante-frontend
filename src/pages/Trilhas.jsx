@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { BookOpen, Play, Clock, Search } from 'lucide-react';
+import { BookOpen, Play, Clock, Search, Plus } from 'lucide-react';
 import '../App.css';
 
 const Trilhas = () => {
@@ -50,16 +50,25 @@ const Trilhas = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Trilhas de Formação
-          </h1>
-          <p className="text-gray-600 mb-6">
-            Desenvolva suas competências no agronegócio com nossos cursos especializados
-          </p>
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Trilhas de Formação
+            </h1>
+            <p className="text-gray-600 mt-2">
+              Explore nossos cursos especializados em direito do agronegócio
+            </p>
+          </div>
+          <Link to="/trilhas/criar">
+            <Button className="flex items-center">
+              <Plus className="h-4 w-4 mr-2" />
+              Criar Trilha
+            </Button>
+          </Link>
+        </div>
           
-          {/* Search */}
-          <div className="relative max-w-md">
+        {/* Search */}
+        <div className="relative max-w-md mb-8">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
             <Input
               type="text"

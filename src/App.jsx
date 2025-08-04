@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Trilhas from './pages/Trilhas';
+import CriarTrilha from './pages/CriarTrilha';
 import TrilhaDetalhes from './pages/TrilhaDetalhes';
 import AulaPlayer from './pages/AulaPlayer';
 import './App.css';
@@ -30,6 +31,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Trilhas />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/trilhas/criar" 
+              element={
+                <ProtectedRoute>
+                  <CriarTrilha />
                 </ProtectedRoute>
               } 
             />
