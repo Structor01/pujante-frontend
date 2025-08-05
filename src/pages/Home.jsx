@@ -126,84 +126,99 @@ const Home = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      {/* Hero Banner */}
-      {featuredTrilha && (
-        <div className="relative h-screen flex items-center" style={{ zIndex: 1 }}>
-          {/* Background */}
-          <div className="absolute inset-0">
-            {featuredTrilha.capa_url ? (
-              <img
-                src={featuredTrilha.capa_url}
-                alt={featuredTrilha.titulo}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-r from-primary/40 to-accent/40"></div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          </div>
+      {/* Hero Banner com Vídeo de Fundo */}
+      <div className="relative h-screen flex items-center overflow-hidden" style={{ zIndex: 1 }}>
+        {/* Vídeo de Fundo */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl">
-              <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
-                Trilha em Destaque
-              </Badge>
-              
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                {featuredTrilha.titulo}
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                {featuredTrilha.descricao}
-              </p>
+        {/* Overlay com 60% de transparência */}
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-              <div className="flex items-center space-x-6 mb-8 text-lg">
-                <span className="flex items-center">
-                  <Play className="h-5 w-5 mr-2" />
-                  {featuredTrilha.total_aulas} aulas
-                </span>
-                <span className="flex items-center">
-                  <Clock className="h-5 w-5 mr-2" />
-                  {formatDuration(featuredTrilha.duracao_total)}
-                </span>
-                <span className="flex items-center">
-                  <Star className="h-5 w-5 mr-2 text-yellow-400" />
-                  4.9
-                </span>
-              </div>
+        {/* Gradiente adicional para melhor legibilidade */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-              <div className="flex space-x-4">
-                <Link to={`/trilhas/${featuredTrilha.id}`}>
-                  <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-8 py-3 text-lg font-semibold">
-                    <Play className="h-5 w-5 mr-2" />
-                    Começar Agora
-                  </Button>
-                </Link>
+        {/* Conteúdo do Hero */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl">
+            <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 text-lg px-4 py-2">
+              🌱 Guardiões do Agronegócio
+            </Badge>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+              Pujante
+            </h1>
+            
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold mb-6 text-green-300">
+              Portal Jurídico do Agronegócio
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+              Trilhas de formação especializadas, clube exclusivo e conteúdo de qualidade 
+              para formar os melhores advogados do agronegócio brasileiro.
+            </p>
+
+            <div className="flex items-center space-x-8 mb-10 text-lg">
+              <span className="flex items-center">
+                <BookOpen className="h-6 w-6 mr-2" />
+                Trilhas Especializadas
+              </span>
+              <span className="flex items-center">
+                <Users className="h-6 w-6 mr-2" />
+                Clube Exclusivo
+              </span>
+              <span className="flex items-center">
+                <Star className="h-6 w-6 mr-2 text-yellow-400" />
+                Conteúdo Premium
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/trilhas">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold px-8 py-4 text-lg">
+                  <Play className="h-6 w-6 mr-2" />
+                  Explorar Trilhas
+                </Button>
+              </Link>
+              <Link to="/dashboard">
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg font-semibold"
+                  className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-bold"
                 >
-                  Mais Informações
+                  Acessar Dashboard
                 </Button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
-      )}
 
-      {/* Content Sections */}
-      <div className="relative z-10 -mt-32 pb-20">
+        {/* Indicador de Scroll */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Seções de Conteúdo */}
+      <div className="relative z-10 bg-black">
         {/* Continue Assistindo */}
-        <section className="mb-16">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">Continue Assistindo</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Continue Assistindo</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {recentAulas.map((aula) => (
-                <div key={aula.id} className="group cursor-pointer">
-                  <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden mb-3">
+                <div key={aula.id} className="group cursor-pointer netflix-card">
+                  <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden mb-4">
                     <img
                       src={aula.thumbnail}
                       alt={aula.titulo}
@@ -217,8 +232,8 @@ const Home = () => {
                       {formatDuration(aula.duracao)}
                     </div>
                   </div>
-                  <h3 className="font-semibold text-sm mb-1 line-clamp-2">{aula.titulo}</h3>
-                  <p className="text-gray-400 text-xs">{aula.trilha}</p>
+                  <h3 className="font-semibold text-lg mb-2 line-clamp-2">{aula.titulo}</h3>
+                  <p className="text-gray-400 text-sm">{aula.trilha}</p>
                 </div>
               ))}
             </div>
@@ -226,17 +241,17 @@ const Home = () => {
         </section>
 
         {/* Trilhas Populares */}
-        <section className="mb-16">
+        <section className="py-20 bg-gray-900/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold">Trilhas Populares</h2>
-              <Link to="/trilhas" className="text-primary hover:text-primary/80">
-                Ver todas
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold">Trilhas Populares</h2>
+              <Link to="/trilhas" className="text-primary hover:text-primary/80 text-lg font-semibold">
+                Ver todas →
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {popularTrilhas.map((trilha) => (
-                <Card key={trilha.id} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-colors duration-300 group">
+                <Card key={trilha.id} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300 group netflix-card">
                   <div className="relative aspect-video bg-gray-800 rounded-t-lg overflow-hidden">
                     {trilha.capa_url ? (
                       <img
@@ -252,13 +267,13 @@ const Home = () => {
                   </div>
                   
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-white text-lg line-clamp-2">
+                    <CardTitle className="text-white text-xl line-clamp-2">
                       {trilha.titulo}
                     </CardTitle>
                   </CardHeader>
                   
                   <CardContent>
-                    <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                    <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
                       <span className="flex items-center">
                         <Play className="h-4 w-4 mr-1" />
                         {trilha.total_aulas} aulas
@@ -270,7 +285,7 @@ const Home = () => {
                     </div>
                     
                     <Link to={`/trilhas/${trilha.id}`}>
-                      <Button className="w-full bg-primary hover:bg-primary/90">
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-black font-semibold">
                         Acessar trilha
                       </Button>
                     </Link>
@@ -282,48 +297,77 @@ const Home = () => {
         </section>
 
         {/* Próximos Eventos */}
-        <section>
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">Próximos Eventos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Próximos Eventos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {upcomingEvents.map((evento) => (
-                <Card key={evento.id} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-colors duration-300">
+                <Card key={evento.id} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300 netflix-card">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <Badge className="mb-2 bg-red-600 text-white">
+                        <Badge className="mb-3 bg-red-600 text-white text-sm px-3 py-1">
                           {formatDate(evento.data)}
                         </Badge>
-                        <CardTitle className="text-white text-lg line-clamp-2">
+                        <CardTitle className="text-white text-xl line-clamp-2">
                           {evento.titulo}
                         </CardTitle>
                       </div>
-                      <Calendar className="h-5 w-5 text-gray-400" />
+                      <Calendar className="h-6 w-6 text-gray-400" />
                     </div>
                   </CardHeader>
                   
                   <CardContent>
-                    <div className="space-y-3 mb-4">
+                    <div className="space-y-4 mb-6">
                       <div className="flex items-center text-gray-400">
-                        <Clock className="h-4 w-4 mr-2" />
+                        <Clock className="h-5 w-5 mr-2" />
                         {evento.hora}
                       </div>
                       <div className="flex items-center text-gray-400">
-                        <Users className="h-4 w-4 mr-2" />
+                        <Users className="h-5 w-5 mr-2" />
                         {evento.participantes} inscritos
                       </div>
                     </div>
                     
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-300 mb-6 text-lg">
                       Com {evento.palestrante}
                     </p>
                     
-                    <Button className="w-full bg-primary hover:bg-primary/90">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-black font-semibold">
                       Inscrever-se
                     </Button>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action Final */}
+        <section className="py-20 bg-gradient-to-r from-primary/20 to-accent/20">
+          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Torne-se um Guardião do Agronegócio
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              Junte-se à nossa comunidade exclusiva e tenha acesso a conteúdo premium, 
+              networking qualificado e as melhores oportunidades do setor.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/trilhas/criar">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold px-8 py-4 text-lg">
+                  Criar Trilha
+                </Button>
+              </Link>
+              <Link to="/trilhas">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-bold"
+                >
+                  Explorar Conteúdo
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
