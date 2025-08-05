@@ -128,7 +128,7 @@ const Home = () => {
       
       {/* Hero Banner */}
       {featuredTrilha && (
-        <div className="relative h-screen flex items-center">
+        <div className="relative h-screen flex items-center" style={{ zIndex: 1 }}>
           {/* Background */}
           <div className="absolute inset-0">
             {featuredTrilha.capa_url ? (

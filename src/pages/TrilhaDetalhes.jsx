@@ -5,20 +5,31 @@ import Navbar from '../components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
+import { Progress } from '../components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
-import { ArrowLeft, Play, Clock, BookOpen, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Play, Clock, BookOpen, CheckCircle, Star, Users } from 'lucide-react';
 import '../App.css';
 
 const TrilhaDetalhes = () => {
   const { id } = useParams();
   const [trilha, setTrilha] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userProgress, setUserProgress] = useState(0);
 
   useEffect(() => {
     const fetchTrilha = async () => {
       try {
         const response = await api.get(`/trilhas/${id}`);
         setTrilha(response.data);
+        
+        // Calcular progresso do usuário (simulado)
+        if (response.data.modulos) {
+          const totalAulas = response.data.modulos.reduce((acc, modulo) => 
+            acc + (modulo.aulas?.length || 0), 0
+          );
+          const completedAulas = Math.floor(Math.random() * totalAulas); // Simulado
+          setUserProgress(totalAulas > 0 ? (completedAulas / totalAulas) * 100 : 0);
+        }
       } catch (error) {
         console.error('Erro ao carregar trilha:', error);
       } finally {
@@ -29,11 +40,25 @@ const TrilhaDetalhes = () => {
     fetchTrilha();
   }, [id]);
 
-  const formatDuration = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
+  const formatDuration = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return hours > 0 ? `${hours}h ${mins}min` : `${mins}min`;
+  };
+
+  const getTotalDuration = () => {
+    if (!trilha?.modulos) return 0;
+    return trilha.modulos.reduce((total, modulo) => 
+      total + (modulo.aulas?.reduce((aulaTotal, aula) => 
+        aulaTotal + (aula.duracao || 0), 0) || 0), 0
+    );
+  };
+
+  const getTotalAulas = () => {
+    if (!trilha?.modulos) return 0;
+    return trilha.modulos.reduce((total, modulo) => 
+      total + (modulo.aulas?.length || 0), 0
+    );
   };
 
   if (loading) {
