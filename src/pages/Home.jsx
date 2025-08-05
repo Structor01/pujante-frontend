@@ -134,20 +134,35 @@ const Home = () => {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ minWidth: '100%', minHeight: '100%' }}
+          onError={(e) => console.error('Erro ao carregar vídeo:', e)}
+          onLoadStart={() => console.log('Iniciando carregamento do vídeo')}
+          onCanPlay={() => console.log('Vídeo pode ser reproduzido')}
         >
+          <source src="/hero-video-optimized.mp4" type="video/mp4" />
           <source src="/hero-video.mp4" type="video/mp4" />
+          Seu navegador não suporta vídeos HTML5.
         </video>
 
+        {/* Fallback: Imagem de fundo caso o vídeo não carregue */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23064e3b;stop-opacity:1" /><stop offset="100%" style="stop-color:%23065f46;stop-opacity:1" /></linearGradient></defs><rect width="1920" height="1080" fill="url(%23grad)"/></svg>')`,
+            display: 'block'
+          }}
+        ></div>
+
         {/* Overlay com 60% de transparência */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
 
         {/* Gradiente adicional para melhor legibilidade */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
 
         {/* Conteúdo do Hero */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl">
             <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 text-lg px-4 py-2">
               🌱 Guardiões do Agronegócio
@@ -202,7 +217,7 @@ const Home = () => {
         </div>
 
         {/* Indicador de Scroll */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
